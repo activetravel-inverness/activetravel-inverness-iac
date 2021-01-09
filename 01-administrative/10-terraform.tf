@@ -35,12 +35,10 @@ provider "digitalocean" {
 
 terraform {
   backend "s3" {
-    bucket                      = "activetravel-inverness-tf-state"
+    bucket                      = "activetravel-inverness-state"
     endpoint                    = "ams3.digitaloceanspaces.com"
-    key                         = "administrative"
-    skip_requesting_account_id  = true
+    key                         = "administrative.tfstate"
     skip_credentials_validation = true
-    skip_get_ec2_platforms      = true
     skip_metadata_api_check     = true
     skip_region_validation      = true
     region                      = "ams3"

@@ -14,7 +14,7 @@ resource "digitalocean_project" "ati" {
 ###
 
 resource "digitalocean_spaces_bucket" "ati-tf-state" {
-  name          = "activetravel-inverness-tf-state"
+  name          = "activetravel-inverness-state"
   region        = "ams3"
   acl           = "private"
   force_destroy = false
