@@ -39,4 +39,13 @@ resource "digitalocean_project_resources" "ati-orguk" {
     digitalocean_domain.orguk.urn
   ]
 }
- 
+
+
+###
+# Upload the public part of our SSH Key to DigitalOcean.
+###
+
+resource "digitalocean_ssh_key" "ati-key" {
+  name       = "ActiveTravel Inverness"
+  public_key = file("../.secrets/activetravel-inverness.pub")
+}
