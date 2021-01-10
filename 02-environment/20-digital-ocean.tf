@@ -33,7 +33,7 @@ resource "digitalocean_project_resources" "ati-server-storage" {
 ###
 
 data "digitalocean_ssh_key" "ati-key" {
-  name       = "ActiveTravel Inverness"
+  name = "ActiveTravel Inverness"
 }
 
 
@@ -53,7 +53,7 @@ data "template_cloudinit_config" "user_group" {
   part {
     content_type = "text/cloud-config"
     content      = "${data.template_file.user_group.rendered}"
-    merge_type = "list(append)+dict(recurse_array)+str()"
+    merge_type   = "list(append)+dict(recurse_array)+str()"
   }
 }
 
@@ -63,13 +63,13 @@ data "template_cloudinit_config" "user_group" {
 ###
 
 resource "digitalocean_droplet" "server" {
-  image  = "debian-10-x64"
-  name   = "${terraform.workspace}-server"
-  region = "ams3"
-  size   = "s-1vcpu-1gb"
+  image       = "debian-10-x64"
+  name        = "${terraform.workspace}-server"
+  region      = "ams3"
+  size        = "s-1vcpu-1gb"
   resize_disk = false
-  ipv6 = true
-  monitoring = true 
+  ipv6        = true
+  monitoring  = true
   ssh_keys = [
     data.digitalocean_ssh_key.ati-key.id
   ]
